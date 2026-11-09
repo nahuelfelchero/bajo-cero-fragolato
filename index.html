@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#247f70">
+  <meta name="description" content="Carta digital de Bajo Cero - Helados Artesanales Fragolato. Conocé nuestros sabores.">
+  <title>BAJO CERO - HELADOS ARTESANALES FRAGOLATO</title>
+  <style>
+    :root {
+      --verde: #247f70;
+      --verde-oscuro: #15594f;
+      --verde-claro: #d9eee7;
+      --rosa: #d98ca8;
+      --rosa-claro: #f8e8ee;
+      --naranja: #e78b32;
+      --crema: #fffaf2;
+      --texto: #242b29;
+      --borde: #b9d8ce;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: linear-gradient(145deg, #d8eee7 0%, #f8e8ee 52%, #f7eadb 100%);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: #15594f; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid #a94d70;
+      outline-offset: 4px;
+    }
+    .saltar {
+      position: absolute; left: 1rem; top: -5rem;
+      background: white; color: #123f38; padding: .8rem 1rem;
+      z-index: 10; border-radius: .5rem;
+    }
+    .saltar:focus { top: 1rem; }
+    header {
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      background: linear-gradient(120deg, var(--verde-oscuro), var(--verde) 65%, #399887);
+      border-bottom: 9px solid var(--rosa);
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: ""; display: block; width: 110px; height: 9px;
+      background: var(--naranja); border-radius: 20px;
+      margin: 1.3rem auto 0;
+    }
+    h1 {
+      margin: 0 auto;
+      max-width: 900px;
+      font-size: clamp(1.65rem, 5vw, 2.8rem);
+      line-height: 1.2;
+      letter-spacing: .025em;
+    }
+    .subtitulo { margin: .8rem 0 0; font-size: 1.08rem; }
+    .intro {
+      max-width: 900px; margin: 1.5rem auto 0; padding: 0 1rem;
+      text-align: center;
+    }
+    .intro p { margin: .35rem 0; }
+    main {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 1.5rem auto 3rem;
+    }
+    .herramientas {
+      background: var(--crema); border: 1px solid var(--borde);
+      border-left: 7px solid var(--naranja); border-radius: 1rem;
+      padding: 1.2rem; margin-bottom: 1.5rem;
+      box-shadow: 0 5px 18px #15594f16;
+    }
+    label { display: block; font-weight: bold; margin-bottom: .45rem; }
+    input[type="search"] {
+      width: 100%; min-height: 48px; border: 2px solid var(--verde);
+      border-radius: .65rem; padding: .7rem .85rem;
+      font: inherit; color: var(--texto); background: white;
+    }
+    #estado { margin: .65rem 0 0; font-weight: bold; }
+    nav {
+      background: var(--verde-oscuro); padding: 1rem;
+      border-radius: 1rem; margin-bottom: 1.5rem;
+    }
+    nav h2 { color: white; font-size: 1.15rem; margin: 0 0 .7rem; }
+    .enlaces { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .enlaces a {
+      display: inline-block; background: white; color: var(--verde-oscuro);
+      border-radius: 2rem; padding: .45rem .85rem; font-weight: bold;
+      text-decoration: none;
+    }
+    .enlaces a:hover { background: var(--rosa-claro); }
+    .sabores {
+      background: var(--crema); border: 1px solid var(--borde);
+      border-radius: 1rem; padding: 1.25rem 1.4rem;
+      margin: 1.2rem 0; box-shadow: 0 5px 18px #15594f12;
+      border-top: 6px solid var(--rosa);
+      scroll-margin-top: 1rem;
+    }
+    .sabores:nth-of-type(even) { border-top-color: var(--verde); }
+    .sabores h2 {
+      color: var(--verde-oscuro); margin: 0 0 .8rem;
+      font-size: 1.45rem; border-bottom: 2px solid var(--verde-claro);
+      padding-bottom: .45rem;
+    }
+    .sabores ul {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: .45rem 1rem;
+    }
+    .sabores li {
+      padding: .45rem .65rem; border-radius: .45rem;
+      background: #f4f8f4; border-left: 4px solid var(--verde);
+    }
+    .sin-resultados {
+      background: white; border: 2px solid var(--rosa);
+      padding: 1rem; border-radius: .75rem; font-weight: bold;
+    }
+    footer {
+      text-align: center; color: white; background: var(--verde-oscuro);
+      border-top: 8px solid var(--naranja); padding: 1.3rem 1rem;
+    }
+    footer p { margin: .2rem 0; }
+    @media (max-width: 520px) {
+      main { width: min(100% - 1rem, 1100px); }
+      .sabores { padding: 1rem; }
+      .sabores ul { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <h1>BAJO CERO</h1>
+    <p class="subtitulo">HELADOS ARTESANALES FRAGOLATO</p>
+  </header>
+
+  <div class="intro">
+    <p>¡Te damos la bienvenida a nuestra carta digital!</p>
+    <p>Descubrí nuestros sabores y encontrá tu próximo helado favorito.</p>
+  </div>
+
+  <main id="contenido">
+    <section class="herramientas" aria-labelledby="titulo-busqueda">
+      <h2 id="titulo-busqueda">Buscar sabores</h2>
+      <label for="buscador">Escribí el nombre de un sabor</label>
+      <input type="search" id="buscador" placeholder="Por ejemplo: chocolate, frutilla..." autocomplete="off">
+      <p id="estado" role="status" aria-live="polite">Se muestran todos los sabores.</p>
+    </section>
+
+    <nav aria-label="Categorías de sabores">
+      <h2>Ir a una categoría</h2>
+      <div class="enlaces">
+        <a href="#dulces">Dulces de leche</a>
+        <a href="#chocolates">Chocolates</a>
+        <a href="#granizados">Granizados</a>
+        <a href="#cremas">Cremas</a>
+        <a href="#agua">Al agua</a>
+        <a href="#especiales">Especiales</a>
+      </div>
+    </nav>
+
+    <section class="sabores" id="dulces" aria-labelledby="titulo-dulces">
+      <h2 id="titulo-dulces">Dulces de leche</h2>
+      <ul>
+        <li>Dulce de leche nevado</li>
+        <li>Dulce de leche común</li>
+        <li>Dulce de leche granizado</li>
+        <li>Súper dulce de leche</li>
+        <li>Dulce de leche praliné</li>
+        <li>Dulce de leche bombón</li>
+        <li>Dulce de leche con nuez</li>
+        <li>Dulce de leche Oreo</li>
+      </ul>
+    </section>
+
+    <section class="sabores" id="chocolates" aria-labelledby="titulo-chocolates">
+      <h2 id="titulo-chocolates">Chocolates</h2>
+      <ul>
+        <li>Chocolate</li>
+        <li>Choco Wonka</li>
+        <li>Choco Marroc</li>
+        <li>Choco Dubai</li>
+        <li>Chocolate blanco</li>
+        <li>Choco Selva Negra</li>
+        <li>Chocolate con almendras</li>
+        <li>Choco Rogger</li>
+      </ul>
+    </section>
+
+    <section class="sabores" id="granizados" aria-labelledby="titulo-granizados">
+      <h2 id="titulo-granizados">Granizados</h2>
+      <ul>
+        <li>Granizado</li>
+        <li>Menta granizada</li>
+        <li>Frutilla granizada</li>
+      </ul>
+    </section>
+
+    <section class="sabores" id="cremas" aria-labelledby="titulo-cremas">
+      <h2 id="titulo-cremas">Cremas</h2>
+      <ul>
+        <li>Crema Americana</li>
+        <li>Frutilla</li>
+        <li>Vainilla</li>
+        <li>Crema del cielo</li>
+        <li>Crema flan</li>
+        <li>Crema Fragola</li>
+        <li>Crema Cookie</li>
+        <li>Pistacho Cream</li>
+        <li>Crema Rusa</li>
+        <li>Crema Kinder</li>
+        <li>Crema Rocklet</li>
+        <li>Cereza liso (en el pozo)</li>
+      </ul>
+    </section>
+
+    <section class="sabores" id="agua" aria-labelledby="titulo-agua">
+      <h2 id="titulo-agua">Al agua</h2>
+      <ul>
+        <li>Limón</li>
+        <li>Frutilla</li>
+        <li>Manzana verde</li>
+        <li>Uva Fish</li>
+        <li>Maracuyá</li>
+        <li>Limón tropical</li>
+      </ul>
+    </section>
+
+    <section class="sabores" id="especiales" aria-labelledby="titulo-especiales">
+      <h2 id="titulo-especiales">Especiales</h2>
+      <ul>
+        <li>Banana Split</li>
+        <li>Tramontana</li>
+        <li>Tarta de coco</li>
+        <li>Tiramisú</li>
+        <li>Frambuesa Dubai</li>
+        <li>Fragonui</li>
+        <li>Capuchino</li>
+        <li>Banaoffee</li>
+        <li>Limón con frutillas</li>
+        <li>Pico Dulce</li>
+        <li>Flinnpaf</li>
+        <li>Palito de la Selva</li>
+        <li>Mantecol</li>
+        <li>Mascarpone con frutos rojos</li>
+        <li>Quinotos al whisky</li>
+        <li>Cereza sembrada</li>
+        <li>Frutilla sembrada</li>
+        <li>Durazno sembrado</li>
+        <li>Ananá sembrado</li>
+        <li>Rohdesia</li>
+        <li>Amarena</li>
+        <li>Tricolor</li>
+        <li>Chocotorta</li>
+        <li>Frambuesa</li>
+        <li>Vanitella</li>
+      </ul>
+    </section>
+    <p id="sin-resultados" class="sin-resultados" hidden>No se encontraron sabores con ese nombre.</p>
+  </main>
+
+  <footer>
+    <p>BAJO CERO - HELADOS ARTESANALES FRAGOLATO</p>
+    <p>Carta digital</p>
+  </footer>
+
+  <script>
+    const buscador = document.getElementById("buscador");
+    const estado = document.getElementById("estado");
+    const secciones = Array.from(document.querySelectorAll(".sabores"));
+    const sinResultados = document.getElementById("sin-resultados");
+
+    buscador.addEventListener("input", () => {
+      const consulta = buscador.value.trim().toLocaleLowerCase("es");
+      let cantidad = 0;
+
+      secciones.forEach((seccion) => {
+        const sabores = Array.from(seccion.querySelectorAll("li"));
+        let visibles = 0;
+
+        sabores.forEach((sabor) => {
+          const coincide = sabor.textContent.toLocaleLowerCase("es").includes(consulta);
+          sabor.hidden = !coincide;
+          if (coincide) visibles++;
+        });
+
+        seccion.hidden = visibles === 0;
+        cantidad += visibles;
+      });
+
+      sinResultados.hidden = cantidad !== 0;
+      if (consulta === "") {
+        estado.textContent = "Se muestran todos los sabores.";
+      } else {
+        estado.textContent = cantidad === 1
+          ? "Se encontró 1 sabor."
+          : "Se encontraron " + cantidad + " sabores.";
+      }
+    });
+  </script>
+</body>
+</html>
